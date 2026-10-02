@@ -1,0 +1,446 @@
+/* ===== Traffic Hero — shared styles ===== */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+    background: #10233f;
+    color: #fff;
+}
+
+.sky-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #6fb8f0 0%, #9fd6f5 45%, #dff3ff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative scrolling road strip along the bottom, purely visual */
+.sky-bg::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 34px;
+    background:
+        repeating-linear-gradient(90deg, #ffd23f 0 36px, transparent 36px 68px) center / 68px 6px no-repeat,
+        #263449;
+    background-position: 0 center, 0 0;
+    animation: roadScroll 1.4s linear infinite;
+    z-index: 0;
+}
+
+@keyframes roadScroll {
+    from { background-position: 0 center, 0 0; }
+    to   { background-position: -68px center, 0 0; }
+}
+
+.panel { position: relative; z-index: 1; }
+
+.panel {
+    width: 100%;
+    max-width: 760px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(8, 20, 45, 0.4);
+    animation: panelIn 0.35s ease-out;
+}
+
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Home screen ---------- */
+.home-panel {
+    text-align: center;
+    padding: 52px 32px 44px;
+    background: linear-gradient(160deg, rgba(111,184,240,0.92) 0%, rgba(191,230,255,0.92) 70%, rgba(232,246,255,0.94) 100%);
+}
+
+.logo {
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+    background: linear-gradient(180deg, #16305a, #10233f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(3px 3px 0 rgba(255,255,255,0.55));
+}
+
+.logo span {
+    display: block;
+    color: #ffb400;
+    -webkit-text-stroke: 1.5px #10233f;
+}
+
+.tagline {
+    color: #16305a;
+    font-weight: 700;
+    margin: 6px 0 32px;
+}
+
+.login-field {
+    text-align: left;
+    width: 260px;
+    margin: 0 auto 14px;
+}
+
+.login-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #10233f;
+    margin-bottom: 4px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 9px;
+    border: 1.5px solid #b9c4dd;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background: #fff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #2d6cdf;
+    box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.2);
+}
+
+.login-error {
+    display: block;
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.menu-btn {
+    display: block;
+    width: 260px;
+    margin: 0 auto 14px;
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    letter-spacing: 0.5px;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    transition: transform 0.1s, box-shadow 0.1s, filter 0.15s;
+}
+
+.menu-btn:hover { filter: brightness(1.07); transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.2); }
+.menu-btn:active { transform: translateY(2px); box-shadow: none; }
+
+.btn-start { background: linear-gradient(180deg, #34c471, #219150); }
+.btn-blue  { background: linear-gradient(180deg, #3d7bef, #2158b8); }
+
+/* ---------- Rules screen ---------- */
+.rules-panel { background: rgba(238,241,246,0.94); color: #10233f; padding: 30px; }
+
+.rules-panel h1 {
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    text-align: center;
+    font-size: 32px;
+    margin: 4px 0 22px;
+    color: #10233f;
+}
+
+.rule-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 13px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(16, 35, 63, 0.08);
+    transition: transform 0.12s;
+}
+.rule-row:hover { transform: translateX(3px); }
+
+.rule-icon {
+    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #eef3fb, #dbe6f5);
+    box-shadow: inset 0 0 0 1px rgba(16,35,63,0.06), 0 3px 6px rgba(16,35,63,0.1);
+}
+
+.rule-row strong { display: block; font-size: 15px; }
+.rule-row span { font-size: 13px; color: #55607a; }
+
+.back-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 30px;
+    background: #2d6cdf;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ---------- Gameplay screen ---------- */
+.game-wrap { background: rgba(11,24,48,0.94); padding: 14px; }
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, #14284d, #0c1830);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    gap: 6px;
+    flex-wrap: wrap;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.hud span { margin-right: 4px; }
+#hudLives { color: #ff5b5b; }
+#hudScore { color: #ffd23f; }
+
+.stage {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+#gameCanvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    background: #5b8a4a;
+}
+
+.give-way-banner {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #1f8a4c;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.crossing-banner {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #e08e0b;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.red-light-banner {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #c0392b;
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    animation: redPulse 0.6s infinite alternate;
+}
+
+@keyframes redPulse {
+    from { opacity: 1; }
+    to { opacity: 0.55; }
+}
+
+.pause-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background: #2d6cdf;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    flex: none;
+}
+
+.pause-btn.muted {
+    background: #55607a;
+    opacity: 0.7;
+}
+
+.level-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    background: rgba(15, 31, 61, 0.9);
+    border: 2px solid #ffd23f;
+    color: #ffd23f;
+    font-family: "Baloo 2", "Segoe UI", sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: 1px;
+    padding: 10px 26px;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 5;
+}
+
+.level-banner.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.toast {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.toast.show { opacity: 1; }
+
+.pad {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.pad-btn {
+    width: 56px;
+    height: 44px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #10233f;
+    background: #ffd23f;
+    border: none;
+    border-radius: 8px;
+    user-select: none;
+}
+
+.play-instructions {
+    text-align: center;
+    color: #b9c4dd;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 12px 4px 2px;
+    line-height: 1.6;
+}
+
+/* ---------- Game over overlay ---------- */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 12, 26, 0.88);
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay.show { display: flex; }
+
+.overlay-card { padding: 20px; }
+
+.overlay-card h2 { font-family: "Baloo 2", "Segoe UI", sans-serif; color: #ff5b5b; font-size: 32px; margin: 0 0 6px; }
+.overlay-card .label { font-size: 13px; letter-spacing: 1px; color: #b9c4dd; }
+.overlay-card .score { font-family: "Baloo 2", "Segoe UI", sans-serif; font-size: 42px; color: #ffd23f; font-weight: 800; margin: 2px 0 10px; }
+.overlay-card .stars { font-size: 32px; letter-spacing: 6px; margin-bottom: 6px; }
+.overlay-card .best { font-size: 13px; color: #b9c4dd; margin-bottom: 6px; }
+.overlay-card .message { margin-bottom: 20px; font-weight: 600; }
+
+.overlay-buttons { display: flex; gap: 12px; justify-content: center; }
+.overlay-buttons button, .overlay-buttons a {
+    padding: 12px 22px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.leaderboard {
+    width: 220px;
+    margin: 0 auto 14px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: left;
+}
+.lb-title {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #ffd23f;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.lb-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 3px 0;
+    color: #e6ebf5;
+}
